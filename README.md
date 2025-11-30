@@ -1,1 +1,1 @@
-# nisarsyed.github.io
+A personal portfolio showcasing projects, skills, and experience. Built with React and TypeScript.

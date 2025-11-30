@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Manrope", sans-serif;
+
+  --color-void: var(--color-bg);
+  --color-panel: var(--color-panel);
+  --color-surface: #121212;
+  --color-border: #27272a;
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-success: #4ade80;
+  --color-muted: #71717a;
+
+  @keyframes blink {
+    0%, 100% { opacity: 1 }
+    50% { opacity: 0 }
+  }
+
+  @keyframes scanline {
+    0% { background-position: 0 0 }
+    100% { background-position: 0 100% }
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(10px) }
+    100% { opacity: 1; transform: translateY(0) }
+  }
+
+  @keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+  }
+
+  @keyframes rainbow {
+    0% { filter: hue-rotate(0deg) }
+    100% { filter: hue-rotate(360deg) }
+  }
+
+  @keyframes equalizer {
+    0% { height: 20% }
+    50% { height: 100% }
+    100% { height: 20% }
+  }
+
+  --animate-blink: blink 1s step-start infinite;
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-glitch: glitch 0.3s cubic-bezier(.25, .46, .45, .94) infinite;
+  --animate-rainbow: rainbow 2s linear infinite;
+  --animate-equalizer: equalizer 1s linear infinite;
+}
+
+:root {
+  --color-primary: #fbbf24; /* Default: Amber */
+  --color-secondary: #22d3ee; /* Default: Cyan */
+  --color-bg: #050505;
+  --color-panel: #0a0a0a;
+}
+body {
+  background-color: var(--color-bg);
+  color: #e4e4e7;
+  overflow-x: hidden;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1)
+  );
+  background-size: 100% 4px;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  opacity: 0.15;
+}
